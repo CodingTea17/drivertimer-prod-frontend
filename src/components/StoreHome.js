@@ -128,6 +128,18 @@ class StoreHome extends Component {
             />
           </Menu.Item>
           <Menu.Item>
+            <NavLink
+              to={`/`}
+              activeClassName='is-active'
+            >
+              <Icon
+                inverted
+                name='home'
+                size="big"
+              />
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item>
             <h1>Store { this.state.store_number }</h1>
           </Menu.Item>
         </Menu>
