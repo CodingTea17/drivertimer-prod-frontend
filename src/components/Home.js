@@ -74,6 +74,7 @@ class Home extends Component {
         <Menu
           inverted
           borderless={ true }
+          styles={{ borderRadius: "0" }}
         >
           <Menu.Item>
             <NavLink
@@ -88,7 +89,7 @@ class Home extends Component {
             </NavLink>
           </Menu.Item>
         </Menu>
-        <Card fluid>
+        <Card inverted fluid>
           <MapWithAMarker
             googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
             loadingElement={<div style={{ height: `100%` }} />}
@@ -98,10 +99,10 @@ class Home extends Component {
             onMarkerClick={this.handleMarkerClick}
           />
         </Card>
-        <Card fluid>
+        <Card fluid inverted>
           <Container>
             <Segment inverted>
-              <List divided inverted relaxed size="huge">
+              <List divided relaxed size="huge">
                 {
                   this.state.stores.map((store, index) => (
                     <List.Item key={store.id}>
