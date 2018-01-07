@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Sound from 'react-sound';
+import Sound, { soundManager } from 'react-sound';
 import Clock from './Clock';
 import notification from './notification_sound.mp3';
 import ActionCable from 'actioncable';
