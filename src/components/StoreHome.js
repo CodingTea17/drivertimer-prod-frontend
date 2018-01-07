@@ -28,7 +28,7 @@ class StoreHome extends Component {
       drivers: [],
       store_number: this.props.match.params.id,
       form: {},
-      open: false
+      modalOpen: false
     };
   }
 
@@ -53,7 +53,7 @@ class StoreHome extends Component {
   }
 
   closeModal = () => {
-    this.setState({ open: false });
+    this.setState({ modalOpen: false });
   }
 
   handleDeleteDriver = (driver_id) => {
@@ -139,7 +139,7 @@ class StoreHome extends Component {
             inverted
           >
             <Menu.Item name='newdriver'>
-              <Modal open={ open }trigger={ <Button fluid inverted>Add Driver</Button> }>
+              <Modal open={ modalOpen }trigger={ <Button fluid inverted>Add Driver</Button> }>
                 <Modal.Header style={ {textAlign: "center"} }>Add New Driver</Modal.Header>
                 <Modal.Content>
                   <Modal.Description>
