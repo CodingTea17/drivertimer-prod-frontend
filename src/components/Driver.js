@@ -29,7 +29,7 @@ class Driver extends Component {
         }
       })
     })
-    const cable = ActionCable.createConsumer('wss://https://drivertimer-beta.herokuapp.com/cable')
+    const cable = ActionCable.createConsumer('wss://drivertimer-beta.herokuapp.com/cable')
     this.sub = cable.subscriptions.create({channel: 'DriverMessagesChannel', store: this.state.store_number, driver: this.state.driver.id}, {
       received: this.handleReceiveNewDriverMessage
     })
