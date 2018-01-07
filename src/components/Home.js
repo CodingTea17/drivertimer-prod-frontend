@@ -10,13 +10,17 @@ import {
 
 const MapWithAMarker = withScriptjs(withGoogleMap(props =>
   <GoogleMap
-    defaultZoom={4}
+    defaultZoom={5}
     defaultCenter={{ lat: 39.8984293, lng: -117.8050728 }}
   >
-    {console.log(props.stores)}
-    <Marker
-      position={{ lat: 39.8984293, lng: -117.8050728 }}
-    />
+    {
+      this.state.stores.map((store, index) => (
+        <Marker
+          position={{ lat: store.latitude, lng: store.longitude }}
+          key={store.id}
+        />
+      ))
+    }
   </GoogleMap>
 ));
 
@@ -46,7 +50,7 @@ class Home extends Component {
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `400px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
-          stores={"a lot"}
+          stores={this.state.store}
         />
         {
           this.state.stores.map((store, index) => (
