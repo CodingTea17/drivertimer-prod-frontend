@@ -81,11 +81,20 @@ class Home extends Component {
           <List divided inverted relaxed size="huge">
             {
               this.state.stores.map((store, index) => (
-                    <Store
-                      key={store.id}
-                      store={store}
-                      count={index + 1}
-                    />
+                <List.Item key={store.id}>
+                  <NavLink
+                    to={`/stores/${store.store_number}`}
+                    activeClassName='is-active'
+                  >
+                    <List.Header>
+                      <List.Icon name='marker' />
+                      { store.store_number }
+                    </List.Header>
+                    <List.Description>
+                      { store.address }
+                    </List.Description>
+                  </NavLink>
+                </List.Item>
               ))
             }
           </List>
