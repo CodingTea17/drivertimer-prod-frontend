@@ -27,7 +27,8 @@ class StoreHome extends Component {
       visible: false,
       drivers: [],
       store_number: this.props.match.params.id,
-      form: {}
+      form: {},
+      open: false
     };
   }
 
@@ -49,6 +50,10 @@ class StoreHome extends Component {
 
   toggleVisibility = () => {
     this.setState({ visible: !this.state.visible });
+  }
+
+  closeModal = () => {
+    this.setState({ open: false });
   }
 
   handleDeleteDriver = (driver_id) => {
@@ -96,6 +101,7 @@ class StoreHome extends Component {
       // Wait for a response before updating the list to make sure the server has finished
       if (response.status === 200 || response.status === 0) {
         this.updateDriverList();
+        this.closeModal();
       }
     });
   }
@@ -133,7 +139,7 @@ class StoreHome extends Component {
             inverted
           >
             <Menu.Item name='newdriver'>
-              <Modal trigger={ <Button fluid inverted>Add Driver</Button> }>
+              <Modal open={ open }trigger={ <Button fluid inverted>Add Driver</Button> }>
                 <Modal.Header style={ {textAlign: "center"} }>Add New Driver</Modal.Header>
                 <Modal.Content>
                   <Modal.Description>
