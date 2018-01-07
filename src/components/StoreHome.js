@@ -94,7 +94,7 @@ class StoreHome extends Component {
       method: 'POST',
       body: JSON.stringify({
           name: this.state.form['name'],
-          phone_number: `1${this.state.form['phone_number']`}
+          phone_number: `1${this.state.form['phone_number']}`}
       })
     })
     .then((response) => {
