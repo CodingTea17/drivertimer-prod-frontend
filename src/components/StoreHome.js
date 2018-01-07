@@ -28,7 +28,7 @@ class StoreHome extends Component {
       drivers: [],
       store_number: this.props.match.params.id,
       form: {},
-      isModalOpen: false
+      modalOpen: false
     };
   }
 
@@ -52,8 +52,12 @@ class StoreHome extends Component {
     this.setState({ visible: !this.state.visible });
   }
 
-  closeModal = () => {
-    this.setState({ isModalOpen: false });
+  handleOpen = () => {
+    this.setState({ modalOpen: true })
+  }
+
+  handleClose = () => {
+    this.setState({ modalOpen: false })
   }
 
   handleDeleteDriver = (driver_id) => {
@@ -68,7 +72,7 @@ class StoreHome extends Component {
       // Wait for a response before updating the list to make sure the server has finished
       if (response.status === 200 || response.status === 0) {
         this.updateDriverList();
-        this.closeModal;
+        this.handleClose;
       }
     });
   }
@@ -107,7 +111,7 @@ class StoreHome extends Component {
   }
 
   render() {
-    const { visible, isModalOpen } = this.state;
+    const { visible, modalOpen } = this.state;
     return (
       <div style={ {textAlign: "center"} }>
         <Menu
@@ -138,7 +142,11 @@ class StoreHome extends Component {
             inverted
           >
             <Menu.Item name='newdriver'>
-              <Modal trigger={ <Button fluid inverted>Add Driver</Button> }>
+              <Modal
+                trigger={<Button fluid inverted onClick={ this.handleOpen }>Add Driver</Button>}
+                open={ this.state.modalOpen }
+                onClose={ this.handleClose }
+              >
                 <Modal.Header style={ {textAlign: "center"} }>Add New Driver</Modal.Header>
                 <Modal.Content>
                   <Modal.Description>
