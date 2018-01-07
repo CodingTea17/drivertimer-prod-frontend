@@ -53,7 +53,7 @@ class StoreHome extends Component {
   }
 
   closeModal = () => {
-    this.setState({ modalOpen: false });
+    this.setState({ isModalOpen: false });
   }
 
   handleDeleteDriver = (driver_id) => {
@@ -68,6 +68,7 @@ class StoreHome extends Component {
       // Wait for a response before updating the list to make sure the server has finished
       if (response.status === 200 || response.status === 0) {
         this.updateDriverList();
+        this.closeModal;
       }
     });
   }
@@ -94,7 +95,7 @@ class StoreHome extends Component {
       method: 'POST',
       body: JSON.stringify({
           name: this.state.form['name'],
-          phone_number: `1${this.state.form['phone_number']}`}
+          phone_number: `1${this.state.form['phone_number']}`
       })
     })
     .then((response) => {
@@ -106,8 +107,7 @@ class StoreHome extends Component {
   }
 
   render() {
-    const { visible } = this.state;
-
+    const { visible, isModalOpen } = this.state;
     return (
       <div style={ {textAlign: "center"} }>
         <Menu
