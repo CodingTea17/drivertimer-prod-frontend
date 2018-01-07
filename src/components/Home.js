@@ -1,16 +1,29 @@
 import React, { Component } from 'react';
 import Store from './Store.js';
-import GoogleMapReact from 'google-map-react';
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+} from "react-google-maps";
+
+const MapWithAMarker = withScriptjs(withGoogleMap(props =>
+  <GoogleMap
+    defaultZoom={8}
+    defaultCenter={{ lat: -34.397, lng: 150.644 }}
+  >
+    <Marker
+      position={{ lat: -34.397, lng: 150.644 }}
+    />
+  </GoogleMap>
+));
 
 class Home extends Component {
   constructor() {
     super();
     this.state = {
       stores: [],
-      center: {lat: 39.4879424, lng: -118.435933},
-      zoom: 5.84
     };
   }
 
@@ -25,20 +38,12 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <GoogleMapReact
-          bootstrapURLKeys={{
-            key: process.env.MAPS_API_KEY,
-            language: 'en',
-          }}
-          defaultCenter={this.state.center}
-          defaultZoom={this.state.zoom}
-        >
-          <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
-            text={'Kreyser Avrora'}
-          />
-        </GoogleMapReact>
+        <MapWithAMarker
+          googleMapURL=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `400px` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+        />
         {
           this.state.stores.map((store, index) => (
             <Store
