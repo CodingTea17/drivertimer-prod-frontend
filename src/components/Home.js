@@ -63,7 +63,7 @@ class Home extends Component {
           containerElement={<div style={{ height: `400px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
           stores={this.state.stores}
-          onMarkerClick={this.handleMarkerClick(store_id)}
+          onMarkerClick={this.handleMarkerClick}
         />
         {
           this.state.stores.map((store, index) => (
