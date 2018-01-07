@@ -11,7 +11,7 @@ import {
 const MapWithAMarker = withScriptjs(withGoogleMap(props =>
   <GoogleMap
     defaultZoom={5}
-    defaultCenter={{ lat: 39.8984293, lng: -117.8050728 }}
+    defaultCenter={{ lat: 40.6796862, lng: -121.5388716 }}
   >
     {
       props.stores.map((store, index) => (
