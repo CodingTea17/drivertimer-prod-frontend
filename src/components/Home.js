@@ -9,8 +9,8 @@ class Home extends Component {
     super();
     this.state = {
       stores: [],
-      center: {lat: 59.95, lng: 30.33},
-      zoom: 11
+      center: {lat: 39.4879424, lng: -118.435933},
+      zoom: 5.84
     };
   }
 
@@ -26,8 +26,8 @@ class Home extends Component {
     return (
       <div>
         <GoogleMapReact
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
+          defaultCenter={this.state.center}
+          defaultZoom={this.state.zoom}
         >
           <AnyReactComponent
             lat={59.955413}
