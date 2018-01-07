@@ -35,7 +35,7 @@ class StoreHome extends Component {
   componentDidMount() {
     window.fetch(`https://drivertimer-beta.herokuapp.com/api/stores/${this.state.store_number}/drivers`).then(data => {
       data.json().then(res => {
-        this.setState({ drivers: res })
+        this.setState({ drivers: res });
       })
     })
   }
@@ -43,7 +43,7 @@ class StoreHome extends Component {
   updateDriverList(response) {
       window.fetch(`https://drivertimer-beta.herokuapp.com/api/stores/${this.state.store_number}/drivers`).then(data => {
         data.json().then(res => {
-          this.setState({ drivers: res })
+          this.setState({ drivers: res });
         });
       });
   }
@@ -53,11 +53,11 @@ class StoreHome extends Component {
   }
 
   handleOpen = () => {
-    this.setState({ modalOpen: true })
+    this.setState({ modalOpen: true });
   }
 
   handleClose = () => {
-    this.setState({ modalOpen: false })
+    this.setState({ modalOpen: false });
   }
 
   handleDeleteDriver = (driver_id) => {
@@ -72,7 +72,6 @@ class StoreHome extends Component {
       // Wait for a response before updating the list to make sure the server has finished
       if (response.status === 200 || response.status === 0) {
         this.updateDriverList();
-        this.handleClose();
       }
     });
   }
@@ -106,6 +105,7 @@ class StoreHome extends Component {
       // Wait for a response before updating the list to make sure the server has finished
       if (response.status === 200 || response.status === 0) {
         this.updateDriverList();
+        this.handleClose();
       }
     });
   }
