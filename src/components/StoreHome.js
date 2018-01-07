@@ -101,7 +101,7 @@ class StoreHome extends Component {
       // Wait for a response before updating the list to make sure the server has finished
       if (response.status === 200 || response.status === 0) {
         this.updateDriverList();
-        this.closeModal();
+        this.closeModal;
       }
     });
   }
@@ -109,6 +109,7 @@ class StoreHome extends Component {
   render() {
     const { visible } = this.state;
     const { modalOpen } = this.state;
+
     return (
       <div style={ {textAlign: "center"} }>
         <Menu
