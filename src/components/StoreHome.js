@@ -32,7 +32,7 @@ class StoreHome extends Component {
   }
 
   componentDidMount() {
-    window.fetch(`/api/stores/${this.state.store_number}/drivers`).then(data => {
+    window.fetch(`https://drivertimer-beta.herokuapp.com/api/stores/${this.state.store_number}/drivers`).then(data => {
       data.json().then(res => {
         this.setState({ drivers: res })
       })
@@ -40,7 +40,7 @@ class StoreHome extends Component {
   }
 
   updateDriverList(response) {
-      window.fetch(`/api/stores/${this.state.store_number}/drivers`).then(data => {
+      window.fetch(`https://drivertimer-beta.herokuapp.com/api/stores/${this.state.store_number}/drivers`).then(data => {
         data.json().then(res => {
           this.setState({ drivers: res })
         });
@@ -52,7 +52,7 @@ class StoreHome extends Component {
   }
 
   handleDeleteDriver = (driver_id) => {
-    fetch(`/api/stores/${this.state.store_number}/drivers/${driver_id}`, {
+    fetch(`https://drivertimer-beta.herokuapp.com/api/stores/${this.state.store_number}/drivers/${driver_id}`, {
       method: 'DELETE'
     })
     .then((response) => {
@@ -77,7 +77,7 @@ class StoreHome extends Component {
   handleAddDriver = (event) => {
     event.preventDefault();
 
-    fetch(`/api/stores/${this.state.store_number}/drivers`, {
+    fetch(`https://drivertimer-beta.herokuapp.com/api/stores/${this.state.store_number}/drivers`, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
