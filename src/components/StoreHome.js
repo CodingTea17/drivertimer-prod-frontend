@@ -52,7 +52,11 @@ class StoreHome extends Component {
   }
 
   handleDeleteDriver = (driver_id) => {
-    fetch(`https://drivertimer-beta.herokuapp.com/api/stores/${this.state.store_number}/drivers/${driver_id}`, {
+    fetch(`https://drivertimer-beta.herokuapp.com/api/stores/${this.state.store_number}/drivers/${driver_id}`,
+    {
+      headers: {
+	     'Access-Control-Allow-Origin': '*'
+	    },
       method: 'DELETE'
     })
     .then((response) => {
