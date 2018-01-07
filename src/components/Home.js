@@ -14,7 +14,7 @@ const MapWithAMarker = withScriptjs(withGoogleMap(props =>
     defaultCenter={{ lat: 39.8984293, lng: -117.8050728 }}
   >
     {
-      this.state.stores.map((store, index) => (
+      props.stores.map((store, index) => (
         <Marker
           position={{ lat: store.latitude, lng: store.longitude }}
           key={store.id}
