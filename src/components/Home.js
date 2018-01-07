@@ -38,14 +38,14 @@ class Home extends Component {
       data.json().then(res => {
         this.setState({ stores: res })
       })
-    }).then(function () {
+    }).then(() => {
       const stores = this.state.stores;
-      console.log(stores);
-      stores.sort(function(a,b) {
-        return parseInt(a.store_number, 10) - parseInt(b.store_number, 10);
-      })
-      console.log(stores);
-      this.setState({stores})
+      console.log(this.state.stores);
+      // stores.sort(function(a,b) {
+      //   return parseInt(a.store_number, 10) - parseInt(b.store_number, 10);
+      // })
+      // console.log(stores);
+      // this.setState({stores})
     })
   }
 
