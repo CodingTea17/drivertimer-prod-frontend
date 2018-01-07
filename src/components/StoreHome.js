@@ -108,7 +108,7 @@ class StoreHome extends Component {
 
   render() {
     const { visible } = this.state;
-
+    const { modalOpen } = this.state;
     return (
       <div style={ {textAlign: "center"} }>
         <Menu
@@ -139,7 +139,7 @@ class StoreHome extends Component {
             inverted
           >
             <Menu.Item name='newdriver'>
-              <Modal open={ modalOpen }trigger={ <Button fluid inverted>Add Driver</Button> }>
+              <Modal open={ modalOpen } trigger={ <Button fluid inverted>Add Driver</Button> }>
                 <Modal.Header style={ {textAlign: "center"} }>Add New Driver</Modal.Header>
                 <Modal.Content>
                   <Modal.Description>
