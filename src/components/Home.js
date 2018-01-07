@@ -97,7 +97,7 @@ class Home extends Component {
           stores={this.state.stores}
           onMarkerClick={this.handleMarkerClick}
         />
-      <Card inverted color="black">
+      <Card fluid color="black">
           <Container>
             <Segment>
               <List divided relaxed size="huge">
