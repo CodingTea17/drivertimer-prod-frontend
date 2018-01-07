@@ -36,17 +36,17 @@ class Home extends Component {
     console.log(process.env.MAPS_API_KEY)
     window.fetch('https://drivertimer-api.herokuapp.com/api/stores').then(data => {
       data.json().then(res => {
+        this.sortAndSet(res);
         this.setState({ stores: res })
       })
-    }).then(() => {
-      const stores = this.state.stores;
-      console.log(this.state.stores);
-      // stores.sort(function(a,b) {
-      //   return parseInt(a.store_number, 10) - parseInt(b.store_number, 10);
-      // })
-      // console.log(stores);
-      // this.setState({stores})
     })
+  }
+
+  sortAndSet = (storesData) => {
+    storesData.sort(function(a, b) {
+      return parseInt(a.store_number, 10) - parseInt(b.store_number, 10);
+    })
+    console.log(storesData);
   }
 
   render() {
