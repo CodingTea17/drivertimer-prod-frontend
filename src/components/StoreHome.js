@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Icon, Sidebar, Menu, Segment, Grid, Button, Modal, Form } from 'semantic-ui-react'
-
 import Driver from './Driver';
+import { Icon, Sidebar, Menu, Segment, Grid, Button, Modal, Form } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom';
 
 // const driverStyle = {
 //   width: '33%'
