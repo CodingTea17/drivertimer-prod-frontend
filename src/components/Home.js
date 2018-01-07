@@ -17,12 +17,12 @@ const MapWithAMarker = withScriptjs(withGoogleMap(props =>
     {
       props.stores.map((store, index) => (
         <NavLink
+          key={store.id}
           to={`/stores/${store.store_number}`}
           activeClassName='is-active'
         >
           <Marker
             position={{ lat: store.latitude, lng: store.longitude }}
-            key={store.id}
           />
         </NavLink>
       ))
@@ -52,7 +52,7 @@ class Home extends Component {
       return parseInt(a.store_number, 10) - parseInt(b.store_number, 10);
     })
   }
-  
+
   render() {
     const API_KEY = process.env.MAPS_API_KEY
     return (
