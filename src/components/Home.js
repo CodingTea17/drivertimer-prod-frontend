@@ -40,11 +40,13 @@ class Home extends Component {
       })
     }).then(() => {
       const stores = this.state.stores;
+      console.log(stores);
       stores.sort(function(a,b) {
         return parseInt(a.store_number, 10) - parseInt(b.store_number, 10);
-      });
-      console.log(stores);
-      this.setState({stores})
+      }).then(() => {
+        console.log(stores);
+        this.setState({stores})
+      })
     })
   }
 
