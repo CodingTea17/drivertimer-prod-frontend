@@ -74,7 +74,7 @@ class Home extends Component {
         <Menu
           inverted
           borderless={ true }
-          styles={{ borderRadius: "0" }}
+          style={{ borderRadius: "0" }}
         >
           <Menu.Item>
             <NavLink
@@ -89,19 +89,17 @@ class Home extends Component {
             </NavLink>
           </Menu.Item>
         </Menu>
-        <Card inverted fluid>
-          <MapWithAMarker
-            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: `400px` }} />}
-            mapElement={<div style={{ height: `100%` }} />}
-            stores={this.state.stores}
-            onMarkerClick={this.handleMarkerClick}
-          />
-        </Card>
-        <Card fluid inverted>
+        <MapWithAMarker
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `400px` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+          stores={this.state.stores}
+          onMarkerClick={this.handleMarkerClick}
+        />
+      <Card inverted color="black">
           <Container>
-            <Segment inverted>
+            <Segment>
               <List divided relaxed size="huge">
                 {
                   this.state.stores.map((store, index) => (
