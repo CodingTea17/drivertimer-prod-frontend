@@ -16,7 +16,7 @@ class Driver extends Component {
   }
 
   componentDidMount() {
-    window.fetch(`https://drivertimer-beta.herokuapp.com/api/stores/${this.state.store_number}/drivers/${this.state.driver.id}/last_message`).then(data => {
+    window.fetch(`https://drivertimer-api.herokuapp.com/api/stores/${this.state.store_number}/drivers/${this.state.driver.id}/last_message`).then(data => {
       data.json().then(last_message => {
         if (last_message) {
           const estimatedReturnTime = Date.parse(last_message.message_timestamp) + (last_message.text * 60 * 1000);
@@ -29,7 +29,7 @@ class Driver extends Component {
         }
       })
     })
-    const cable = ActionCable.createConsumer('wss://drivertimer-beta.herokuapp.com/cable')
+    const cable = ActionCable.createConsumer('wss://drivertimer-api.herokuapp.com/cable')
     this.sub = cable.subscriptions.create({channel: 'DriverMessagesChannel', store: this.state.store_number, driver: this.state.driver.id}, {
       received: this.handleReceiveNewDriverMessage
     })
