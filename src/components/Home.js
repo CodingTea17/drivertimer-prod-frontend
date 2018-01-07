@@ -26,6 +26,10 @@ class Home extends Component {
     return (
       <div>
         <GoogleMapReact
+          bootstrapURLKeys={{
+            key: process.env.MAPS_API_KEY,
+            language: 'en',
+          }}
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
         >
