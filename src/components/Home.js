@@ -13,6 +13,7 @@ const MapWithAMarker = withScriptjs(withGoogleMap(props =>
   <GoogleMap
     defaultZoom={5}
     defaultCenter={{ lat: 40.6796862, lng: -121.5388716 }}
+    options={{gestureHandling: "greedy"}}
   >
     {
       props.stores.map((store, index) => (
