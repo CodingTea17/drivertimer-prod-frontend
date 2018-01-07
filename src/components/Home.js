@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Store from './Store.js';
 import { Redirect } from 'react-router';
+import { List, Segment } from 'semantic-ui-react'
+import Store from './Store.js';
 
 import {
   withScriptjs,
@@ -76,15 +77,23 @@ class Home extends Component {
           stores={this.state.stores}
           onMarkerClick={this.handleMarkerClick}
         />
-        {
-          this.state.stores.map((store, index) => (
-            <Store
-              key={store.id}
-              store={store}
-              count={index + 1}
-            />
-          ))
-        }
+        <Segment inverted>
+          <List divided inverted relaxed>
+            {
+              this.state.stores.map((store, index) => (
+                <List.Item>
+                  <List.Header>
+                    <Store
+                      key={store.id}
+                      store={store}
+                      count={index + 1}
+                    />
+                  </List.Header>
+                </List.Item>
+              ))
+            }
+          </List>
+        </Segment>
       </div>
     );
   }
