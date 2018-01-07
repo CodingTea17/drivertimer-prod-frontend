@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import Store from './Store.js';
+import { Redirect } from 'react-router';
 
 import {
   withScriptjs,
@@ -16,15 +16,11 @@ const MapWithAMarker = withScriptjs(withGoogleMap(props =>
   >
     {
       props.stores.map((store, index) => (
-        <NavLink
+        <Marker
+          onClick={() => {props.onMarkerClick(store.id)}}
+          position={{ lat: store.latitude, lng: store.longitude }}
           key={store.id}
-          to={`/stores/${store.store_number}`}
-          activeClassName='is-active'
-        >
-          <Marker
-            position={{ lat: store.latitude, lng: store.longitude }}
-          />
-        </NavLink>
+        />
       ))
     }
   </GoogleMap>
@@ -35,6 +31,8 @@ class Home extends Component {
     super();
     this.state = {
       stores: [],
+      redirect_to: "",
+      redirect: false,
     };
   }
 
@@ -53,8 +51,20 @@ class Home extends Component {
     })
   }
 
+  handleMarkerClick = (store_number) => {
+    this.setState({
+      redirect_to: store_number,
+      redirect: true,
+    });
+  }
+
   render() {
     const API_KEY = process.env.MAPS_API_KEY
+
+    if (this.state.redirect) {
+      return <Redirect push to={`/stores/${this.state.redirect_to}`} />;
+    }
+
     return (
       <div>
         <MapWithAMarker
@@ -63,6 +73,7 @@ class Home extends Component {
           containerElement={<div style={{ height: `400px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
           stores={this.state.stores}
+          onMarkerClick={this.handleMarkerClick}
         />
         {
           this.state.stores.map((store, index) => (
