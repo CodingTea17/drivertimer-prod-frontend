@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import Store from './Store.js';
 
 import {
@@ -15,11 +16,15 @@ const MapWithAMarker = withScriptjs(withGoogleMap(props =>
   >
     {
       props.stores.map((store, index) => (
-        <Marker
-          onClick={() => {props.onMarkerClick(store.id)}}
-          position={{ lat: store.latitude, lng: store.longitude }}
-          key={store.id}
-        />
+        <NavLink
+          to={`/stores/${store.store_number}`}
+          activeClassName='is-active'
+        >
+          <Marker
+            position={{ lat: store.latitude, lng: store.longitude }}
+            key={store.id}
+          />
+        </NavLink>
       ))
     }
   </GoogleMap>
@@ -47,11 +52,7 @@ class Home extends Component {
       return parseInt(a.store_number, 10) - parseInt(b.store_number, 10);
     })
   }
-
-  handleMarkerClick = (store_number) => {
-    console.log(store_number);
-  }
-
+  
   render() {
     const API_KEY = process.env.MAPS_API_KEY
     return (
@@ -62,7 +63,6 @@ class Home extends Component {
           containerElement={<div style={{ height: `400px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
           stores={this.state.stores}
-          onMarkerClick={this.handleMarkerClick}
         />
         {
           this.state.stores.map((store, index) => (
