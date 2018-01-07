@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { List, Segment } from 'semantic-ui-react'
+import { NavLink } from 'react-router';
 import Store from './Store.js';
 
 import {
