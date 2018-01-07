@@ -16,7 +16,7 @@ const MapWithAMarker = withScriptjs(withGoogleMap(props =>
     {
       props.stores.map((store, index) => (
         <Marker
-          onClick={props.onMarkerClick}
+          onClick={props.onMarkerClick(store.id)}
           position={{ lat: store.latitude, lng: store.longitude }}
           key={store.id}
         />
@@ -49,8 +49,8 @@ class Home extends Component {
     })
   }
 
-  handleMarkerClick = () => {
-    console.log("pick me")
+  handleMarkerClick = (store_number) => {
+    console.log(store_number);
   }
 
   render() {
@@ -63,7 +63,7 @@ class Home extends Component {
           containerElement={<div style={{ height: `400px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
           stores={this.state.stores}
-          onMarkerClick={this.handleMarkerClick}
+          onMarkerClick={this.handleMarkerClick(store_id)}
         />
         {
           this.state.stores.map((store, index) => (

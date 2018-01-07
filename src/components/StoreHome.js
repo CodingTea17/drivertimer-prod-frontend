@@ -33,6 +33,7 @@ class StoreHome extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     window.fetch(`https://drivertimer-api.herokuapp.com/api/stores/${this.state.store_number}/drivers`).then(data => {
       data.json().then(res => {
         this.setState({ drivers: res });
