@@ -81,15 +81,11 @@ class Home extends Component {
           <List divided inverted relaxed>
             {
               this.state.stores.map((store, index) => (
-                <List.Item>
-                  <List.Header>
                     <Store
                       key={store.id}
                       store={store}
                       count={index + 1}
                     />
-                  </List.Header>
-                </List.Item>
               ))
             }
           </List>
