@@ -28,7 +28,6 @@ class StoreHome extends Component {
       drivers: [],
       store_number: this.props.match.params.id,
       form: {},
-      modalOpen: false
     };
   }
 
@@ -101,14 +100,12 @@ class StoreHome extends Component {
       // Wait for a response before updating the list to make sure the server has finished
       if (response.status === 200 || response.status === 0) {
         this.updateDriverList();
-        this.closeModal;
       }
     });
   }
 
   render() {
     const { visible } = this.state;
-    const { modalOpen } = this.state;
 
     return (
       <div style={ {textAlign: "center"} }>
@@ -140,7 +137,7 @@ class StoreHome extends Component {
             inverted
           >
             <Menu.Item name='newdriver'>
-              <Modal open={ modalOpen } trigger={ <Button fluid inverted>Add Driver</Button> }>
+              <Modal trigger={ <Button fluid inverted>Add Driver</Button> }>
                 <Modal.Header style={ {textAlign: "center"} }>Add New Driver</Modal.Header>
                 <Modal.Content>
                   <Modal.Description>
