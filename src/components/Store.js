@@ -9,14 +9,15 @@ function Store(props){
         <List.Header>
           { props.store.store_number }
         </List.Header>
-        <List.Content>
+        <List.Icon name='marker' />
+        <List.Description>
           <NavLink
             to={`/stores/${props.store.store_number}`}
             activeClassName='is-active'
           >
             { props.store.address }
           </NavLink>
-        </List.Content>
+        </List.Description>
       </List.Item>
     </div>
   );

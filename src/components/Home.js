@@ -78,7 +78,7 @@ class Home extends Component {
           onMarkerClick={this.handleMarkerClick}
         />
         <Segment inverted>
-          <List divided inverted relaxed>
+          <List divided inverted relaxed size="huge">
             {
               this.state.stores.map((store, index) => (
                     <Store
