@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-import { List, Segment } from 'semantic-ui-react'
+import { List, Segment, Container } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom';
 import Store from './Store.js';
 
@@ -70,36 +70,38 @@ class Home extends Component {
 
     return (
       <div>
-        <MapWithAMarker
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `400px` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-          stores={this.state.stores}
-          onMarkerClick={this.handleMarkerClick}
-        />
-        <Segment inverted>
-          <List divided inverted relaxed size="huge">
-            {
-              this.state.stores.map((store, index) => (
-                <List.Item key={store.id}>
-                  <NavLink
-                    to={`/stores/${store.store_number}`}
-                    activeClassName='is-active'
-                  >
-                    <List.Header>
-                      <List.Icon name='marker' />
-                      { store.store_number }
-                    </List.Header>
-                    <List.Description>
-                      { store.address }
-                    </List.Description>
-                  </NavLink>
-                </List.Item>
-              ))
-            }
-          </List>
-        </Segment>
+        <Container>
+          <MapWithAMarker
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `400px` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+            stores={this.state.stores}
+            onMarkerClick={this.handleMarkerClick}
+          />
+          <Segment inverted>
+            <List divided inverted relaxed size="huge">
+              {
+                this.state.stores.map((store, index) => (
+                  <List.Item key={store.id}>
+                    <NavLink
+                      to={`/stores/${store.store_number}`}
+                      activeClassName='is-active'
+                    >
+                      <List.Header>
+                        <List.Icon name='marker' />
+                        { store.store_number }
+                      </List.Header>
+                      <List.Description>
+                        { store.address }
+                      </List.Description>
+                    </NavLink>
+                  </List.Item>
+                ))
+              }
+            </List>
+          </Segment>
+        </Container>
       </div>
     );
   }
