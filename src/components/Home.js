@@ -34,7 +34,6 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    console.log(process.env.MAPS_API_KEY)
     window.fetch('https://drivertimer-api.herokuapp.com/api/stores').then(data => {
       data.json().then(res => {
         this.sortAndSet(res);
