@@ -16,6 +16,7 @@ class Driver extends Component {
   }
 
   componentDidMount() {
+    soundManager.setup({ ignoreMobileRestrictions : true });
     window.fetch(`https://drivertimer-api.herokuapp.com/api/stores/${this.state.store_number}/drivers/${this.state.driver.id}/last_message`).then(data => {
       data.json().then(last_message => {
         if (last_message) {
