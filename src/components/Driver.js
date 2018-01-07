@@ -16,7 +16,7 @@ class Driver extends Component {
   }
 
   componentDidMount() {
-    window.fetch(`/api/stores/${this.state.store_number}/drivers/${this.state.driver.id}/last_message`).then(data => {
+    window.fetch(`https://drivertimer-beta.herokuapp.com/api/stores/${this.state.store_number}/drivers/${this.state.driver.id}/last_message`).then(data => {
       data.json().then(last_message => {
         if (last_message) {
           const estimatedReturnTime = Date.parse(last_message.message_timestamp) + (last_message.text * 60 * 1000);

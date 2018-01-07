@@ -10,7 +10,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    window.fetch('/api/stores').then(data => {
+    window.fetch('https://drivertimer-beta.herokuapp.com/api/stores').then(data => {
       data.json().then(res => {
         this.setState({ stores: res })
       })
