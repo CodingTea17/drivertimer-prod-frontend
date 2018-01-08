@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Sound from './Sound';
+import Sound from 'react-sound';
 import Clock from './Clock';
 import notification from './notification_sound.mp3';
 import ActionCable from 'actioncable';
-
+import { soundManager } from 'soundmanager2/script/soundmanager2-nodebug';
 
 class Driver extends Component {
   constructor(props) {
@@ -17,6 +17,8 @@ class Driver extends Component {
   }
 
   componentDidMount() {
+    // Setup soundManager
+    soundManager.setup({ ignoreMobileRestrictions: true });
     window.fetch(`https://drivertimer-api.herokuapp.com/api/stores/${this.state.store_number}/drivers/${this.state.driver.id}/last_message`).then(data => {
       data.json().then(last_message => {
         if (last_message) {
