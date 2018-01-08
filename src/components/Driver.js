@@ -3,7 +3,7 @@ import Sound from 'react-sound';
 import Clock from './Clock';
 import notification from './notification_sound.mp3';
 import ActionCable from 'actioncable';
-import { soundManager } from 'soundmanager2';
+import { soundManager } from 'soundmanager2/script/soundmanager2-nodebug';
 
 // Setup soundManager
 soundManager.setup({ ignoreMobileRestrictions: true });
