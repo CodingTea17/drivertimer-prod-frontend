@@ -99,7 +99,7 @@ class StoreHome extends Component {
       method: 'POST',
       body: JSON.stringify({
           name: this.state.form['name'],
-          phone_number: (`1${this.state.form['phone_number']}`).replace(/[^0-9]/, '')
+          phone_number: (`1${this.state.form['phone_number']}`).replace(/[^0-9]/g, '')
       })
     })
     .then((response) => {
